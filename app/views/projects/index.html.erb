@@ -1,0 +1,31 @@
+<% if @project.any? %>
+<h1>Listing projects</h1>
+
+<%= link_to 'Create new project', new_project_path %>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Summary</th>
+    <th>Start date</th>
+    <th>End date</th>
+    <th></th>
+  </tr>
+
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= project.name %></td>
+      <td><%= project.summary %></td>
+      <td><%= link_to 'Show', project_path(project) %></td>
+      <td><%= link_to 'Edit', edit_project_path(project) %></td>
+      <td><%= link_to 'Destroy', project_path(project),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+  <%= link_to 'Create project', new_project_path %>
+  </p>
+<% else %>
+  <%= link_to 'Create project', new_project_path %>
+<% end %>
